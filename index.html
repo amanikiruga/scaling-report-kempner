@@ -4,7 +4,13 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
  font-family:Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1160px;margin:0 auto;padding:38px 28px 54px}
+/* Reproduces the look of viewing this at 67% browser zoom, which is how it was designed to read:
+   the 1160px container renders ~777px wide, leaving generous side margins on a wide screen, and
+   type, cards, charts and videos all scale together. zoom is used rather than shrinking each token
+   individually so the proportions stay exactly as they were at 67%. Disabled on small viewports,
+   where the layout is already narrow and further shrinking would just hurt legibility. */
+.wrap{max-width:1160px;margin:0 auto;padding:38px 28px 54px;zoom:0.67}
+@media (max-width:1000px){.wrap{zoom:1}}
 h2.sec{font-size:15px;font-family:Menlo,ui-monospace,monospace;letter-spacing:0.12em;
  text-transform:uppercase;color:var(--ink2);margin:0 0 14px;font-weight:400;
  border-bottom:1px solid var(--rule);padding-bottom:7px}
